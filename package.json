@@ -26,5 +26,13 @@
   "bugs": {
     "url": "https://github.com/sanjorgek/sails-hook-sanseed/issues"
   },
-  "homepage": "https://github.com/sanjorgek/sails-hook-sanseed#readme"
+  "homepage": "https://github.com/sanjorgek/sails-hook-sanseed#readme",
+  "dependencies": {
+    "async": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "sails": "^0.12.4",
+    "supertest": "^2.0.0"
+  }
 }
