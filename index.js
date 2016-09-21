@@ -43,8 +43,8 @@ module.exports = function myHook(sails) {
 
     routes: {
       before: {
-        'get /seed/*': function(req, res){
-          res.send({"error": "Hook waiting"});
+        'get /seed/*': function(req, res, next){
+          next();
         }
       },
 
