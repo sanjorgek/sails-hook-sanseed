@@ -16,45 +16,41 @@ In `config/seed.js`
 ~~~js
 module.exports.seed = {
   test: {
-    user: [
-      {
-        //Some data
-        username: "juan",
-        name: "Paco",
-        last: "Pedro",
-        password: "de la mar"
-      },
-      {
-        //Some data
-      }
-    ]
+    user: {
+      data: [
+        {
+          //Some data
+          username: "juan",
+          name: "Paco",
+          last: "Pedro",
+          password: "de la mar"
+        },
+        {
+          //Some data
+        }
+      ],
+      //If you want to drop all the time
+      migration: 'drop'
   },
   production: {
-    user: [
-      {
-        //Some data
-        username: "test",
-        name: "Test",
-        last: "Test",
-        password: "iamademo"
-      },
-      {
-        //Some data
-      }
-    ]
+    user: {
+      data: [
+        {
+          //Some data
+          username: "test",
+          name: "Test",
+          last: "Test",
+          password: "iamademo"
+        },
+        {
+          //Some data
+        }
+      ]
   },
   serverX: {
     //Some data
   }
 }
-~~~
-
-In `config/models.js`
-~~~
-module.exports.models = {
-  //If you want to drop all the time
-  migrate: 'drop'
-};
 ~~~
 
 ## Use

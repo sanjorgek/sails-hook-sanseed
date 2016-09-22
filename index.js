@@ -17,16 +17,16 @@ module.exports = function myHook(sails) {
           var modelSeed = sails.config.seed[seed][name];
           if(modelSeed==null || modelSeed==undefined) done(new Error('missing model'));
           else{
-            if(sails.config.models.migrate=="drop") sails.models[name].destroy(
-              {},
-              function(err) {
-                if (err) done(err);
-                else mapCreate(modelSeed,name, done);
-              }
-            );
+            if(modelSeed.migrate=="drop") dropModel(name, function(err) {
+              if(err) done(err);
+              else mapCreate(modelSeed, name, done);
+            });
             else mapCreate(modelSeed, name, done);
           }
-        }
+        };
+        function dropModel (name, done) {
+          sails.models[name].destroy({}, done);
+        };
         sails.seed = {
           seedAll : function (name, done) {
             var seed = sails.config.seed[name];
@@ -35,7 +35,8 @@ module.exports = function myHook(sails) {
               seedModel(name, item, cb);
             },done);
           },
-          seedModel: seedModel
+          seedModel: seedModel,
+          dropModel: dropModel
         }
         return cb();
       });
@@ -65,6 +66,12 @@ module.exports = function myHook(sails) {
             }else{
               res.ok({"result": 200});
             }
+          });
+        },
+        'get /drop/:model': function(req, res) {
+          sails.seed.dropModel(req.params.model,function(err) {
+            if(err) res.send(400,{error: err.message});
+            else res.ok({"result": 200});
           });
         }
       }
