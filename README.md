@@ -30,7 +30,7 @@ module.exports.seed = {
         }
       ],
       //If you want to drop before seed
-      migration: 'drop'
+      migrate: 'drop'
   },
   production: {
     user: {
@@ -47,7 +47,7 @@ module.exports.seed = {
         }
       ],
       // if you want to try without callback an error
-      migration: 'safe'
+      migrate: 'safe'
   },
   serverX: {
     //Some data
@@ -60,6 +60,35 @@ Test at `/seed/production` or `/seed/test/user` to seed.
 
 And `/drop/user` or `/drop` to drop models.
 
+Also you have `sails.seed` with
+
+### seedModel(location, modelName, callback)
+
+__Arguments__
+
+* `location` - A string with location name.
+* `modelName` - A string with model name.
+* `callback(err)` - A callback which is called when all task have finished, or an error occurs.
+
+### seedAll(location, callback)
+
+__Arguments__
+
+* `location` - A string with location name.
+* `callback(err)` - A callback which is called when all task have finished, or an error occurs.
+
+### dropModel(modelName, callback)
+
+__Arguments__
+
+* `modelName` - A string with model name.
+* `callback(err)` - A callback which is called when all task have finished, or an error occurs.
+
+### dropAll(callback)
+
+__Arguments__
+
+* `callback(err)` - A callback which is called when all task have finished, or an error occurs.
 
 [npm-image]: https://img.shields.io/npm/v/sails-hook-sanseed.svg
 [npm-url]: https://npmjs.org/package/sails-hook-sanseed
