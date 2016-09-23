@@ -9,8 +9,12 @@ module.exports = function myHook(sails) {
     initialize: function(cb) {
       sails.after(['hook:orm:loaded'], function() {
         function mapCreate (modelSeed, name, done) {
-          async.mapLimit(modelSeed, 1, function(item, cb) {
-            sails.models[name].create(item, cb);
+          async.mapLimit(modelSeed.data, 1, function(item, cb) {
+            var cb2 = cb;
+            if(modelSeed.migrate=='safe') cb2 = function(err) {
+              cb();
+            } 
+            sails.models[name].create(item, cb2);
           }, done);
         }
         function seedModel(seed, name, done) {
@@ -36,7 +40,13 @@ module.exports = function myHook(sails) {
             },done);
           },
           seedModel: seedModel,
-          dropModel: dropModel
+          dropModel: dropModel,
+          dropAll: function(done) {
+            var modelKeys = Object.keys(sails.models);
+            async.mapLimit(modelKeys, 1, function(item, cb) {
+              dropModel(item, cb);
+            }, done)
+          }
         }
         return cb();
       });
@@ -46,6 +56,9 @@ module.exports = function myHook(sails) {
       before: {
         'get /seed/*': function(req, res, next){
           next();
+        },
+        'get /drop/*': function(req, res, next) {
+          next();
         }
       },
 
@@ -53,25 +66,31 @@ module.exports = function myHook(sails) {
         'get /seed/:location': function(req, res){
           sails.seed.seedAll(req.params.location, function (err) {
             if(err){
-              res.send(400);
+              res.send(400, {error: err.message});
             }else{
-              res.ok({});
+              res.ok({result: "Seed "+req.params.location+" complited"});
             }
           });
         },
         'get /seed/:location/:model': function (req, res) {
           sails.seed.seedModel(req.params.location, req.params.model, function(err) {
             if(err){
-              res.send({"error":err.message});
+              res.send(400, {error: err.message});
             }else{
-              res.ok({"result": 200});
+              res.ok({result: "Seed "+req.params.location+" model "+req.params.model+" created"});
             }
           });
         },
         'get /drop/:model': function(req, res) {
           sails.seed.dropModel(req.params.model,function(err) {
             if(err) res.send(400,{error: err.message});
-            else res.ok({"result": 200});
+            else res.ok({result: "Droped "+req.params.model+" borrado"});
+          });
+        },
+        'get /drop': function(req, res) {
+          sails.seed.dropAll(function(err) {
+            if(err) res.send(400, {error: err.message});
+            else res.ok({result: "Droped all models"});
           });
         }
       }

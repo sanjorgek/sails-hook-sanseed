@@ -29,7 +29,7 @@ module.exports.seed = {
           //Some data
         }
       ],
-      //If you want to drop all the time
+      //If you want to drop before seed
       migration: 'drop'
   },
   production: {
@@ -45,7 +45,9 @@ module.exports.seed = {
         {
           //Some data
         }
-      ]
+      ],
+      // if you want to try without callback an error
+      migration: 'safe'
   },
   serverX: {
     //Some data
@@ -54,7 +56,9 @@ module.exports.seed = {
 ~~~
 
 ## Use
-Test at `/seed/production` or `/seed/test/user`
+Test at `/seed/production` or `/seed/test/user` to seed.
+
+And `/drop/user` or `/drop` to drop models.
 
 
 [npm-image]: https://img.shields.io/npm/v/sails-hook-sanseed.svg
