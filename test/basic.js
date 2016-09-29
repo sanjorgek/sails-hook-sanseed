@@ -52,8 +52,17 @@ describe('Basic tests 1 ::', function() {
 		});
 	});
 
-  it("not found", function (done) {
+  it("location not found", function (done) {
 		request(sails.hooks.http.app).get('/seed/other')
+		.expect(400)
+		.end(function (err, res) {
+			if(err) done(err);
+			else done();
+		});
+	});
+
+  it("model missing", function (done) {
+		request(sails.hooks.http.app).get('/seed/test/lol')
 		.expect(400)
 		.end(function (err, res) {
 			if(err) done(err);

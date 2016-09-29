@@ -21,7 +21,8 @@ module.exports = function myHook(sails) {
             if(modelSeed.migrate=='safe') cb2 = function(err) {
               cb();
             } 
-            sails.models[name].create(item, cb2);
+            if(sails.models[name]) sails.models[name].create(item, cb2);
+            else cb(new Error('Model '+name+" undefined"));
           }, done);
         }
         function seedModel(seed, name, done) {
