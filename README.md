@@ -1,11 +1,12 @@
 # sails-hook-sanseed
-Hook for [sails](http://sailsjs.org/)
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
 
 ## About
-Hook to add items to the base depending on different localities
+Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations
+
+  [![NPM](https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1)](https://nodei.co/npm/sails-hook-sanseed/)
 
 ## Settings
 Install
@@ -55,12 +56,12 @@ module.exports.seed = {
     }
   },
   //optional
-  routes: true
+  routes: true //Defult routes
 }
 ~~~
 
 ## Use
-Test using `/seed/production` or `/seed/test/user` routes to seed or `/drop/user` or `/drop` routes to drop models, if `sails.seed.routes==true` holds.
+If `sails.seed.routes` is true seed your models with `/seed/:location` or `/seed/:location/:model` routes, and `/drop/:model` or `/drop` routes to drop models.
 
 ### Aviable Functions
 Also you have `sails.seed` with
