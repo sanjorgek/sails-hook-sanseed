@@ -26,7 +26,7 @@ module.exports = function myHook(sails) {
             var jsonData = {};
             for(var i = 0; i < limit; i++){
               for(var j = 0; j < keys.length; j++){
-                jsonData[keys[j]] = faker[modelSeed.faker.format[j]];
+                jsonData[keys[j]] = faker[modelSeed.faker.format[j]]();
               }
               modelSeed.data.push(jsonData);
             }
