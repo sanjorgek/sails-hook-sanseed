@@ -115,5 +115,5 @@ function normalSucces(done){
   return function(err, res) {
     if(err) done(err);
     else done();
-  }
+  };
 }
