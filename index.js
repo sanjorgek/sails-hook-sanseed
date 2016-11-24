@@ -23,10 +23,10 @@ module.exports = function myHook(sails) {
             if(modelSeed.faker.quantity) limit = modelSeed.faker.quantity;
             var keys = Object.keys(modelSeed.faker.format);
             modelSeed.data = [];
-            var jsonData = {};
             for(var i = 0; i < limit; i++){
+              var jsonData = {};              
               for(var j = 0; j < keys.length; j++){
-                jsonData[keys[j]] = faker[modelSeed.faker.format[j]]();
+                jsonData[keys[j]] = faker.fake("{{"+modelSeed.faker.format[keys[j]]+"}}");
               }
               modelSeed.data.push(jsonData);
             }
