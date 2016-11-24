@@ -1,5 +1,6 @@
 var async = require('async');
 var debug = require('debug')('sails:hook:sanseed');
+var faker = require('faker');
 
 module.exports = function myHook(sails) {
   return {
@@ -17,6 +18,19 @@ module.exports = function myHook(sails) {
     initialize: function(cb) {       
       sails.after(['hook:orm:loaded', 'hook:policies:loaded'], function() {
         function mapCreate (modelSeed, name, done) {
+          if(modelSeed.faker){
+            var limit = 0;
+            if(modelSeed.faker.quantity) limit = modelSeed.faker.quantity;
+            var keys = Object.keys(modelSeed.faker.format);
+            modelSeed.data = [];
+            var jsonData = {};
+            for(var i = 0; i < limit; i++){
+              for(var j = 0; j < keys.length; j++){
+                jsonData[keys[j]] = faker[modelSeed.faker.format[j]];
+              }
+              modelSeed.data.push(jsonData);
+            }
+          }
           async.mapLimit(modelSeed.data, 1, function(item, cb) {
             var cb2 = cb;
             if(modelSeed.migrate==='safe') cb2 = function(err) {
