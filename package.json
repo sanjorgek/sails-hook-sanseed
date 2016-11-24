@@ -19,7 +19,9 @@
     "hook",
     "seed",
     "multi",
-    "location"
+    "location",
+    "faker",
+    "data generator"
   ],
   "author": "sanjorgek",
   "license": "GPL-3.0",

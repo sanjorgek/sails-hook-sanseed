@@ -47,10 +47,9 @@ module.exports.seed = {
       user: {
         faker: {
           format: {
-            username: "internet.userName",
-            name: "name.firstName",
-            last: "name.lastName",
-            password: "internet.password"
+            username: "{{internet.userName}}",
+            names: "{{name.firstName}} {{name.lastName}}",
+            password: "{{internet.password}}"
           },
           locale: "es",
           quantity: 10
