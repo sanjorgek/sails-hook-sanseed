@@ -2,18 +2,16 @@
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
-  [![Build Status](https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg)](https://travis-ci.org/sanjorgek/sails-hook-sanseed)
-
-  [![Code Climate](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
-  [![Issue Count](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/issue_count.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
-
-  [![bitHound Overall Score](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/score.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed)
-  [![bitHound Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/dependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
-  [![bitHound Dev Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/devDependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
-  [![bitHound Code](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/code.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed)
+  [![Build Status][build-image]][build-url]
+  [![Code Climate][climate-image]][climate-url]
+  [![Issue Count][issue-image]][issue-url]
+  [![bitHound Overall Score][score-image]][score-url]
+  [![bitHound Dependencies][dep-image]][dep-url]
+  [![bitHound Dev Dependencies][devdep-image]][devdep-url]
+  [![bitHound Code][code-image]][code-url]
 
 ## About
-Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations
+Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
 
   [![NPM](https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1)](https://nodei.co/npm/sails-hook-sanseed/)
 
@@ -42,23 +40,24 @@ module.exports.seed = {
         ],
         //If you want to drop before seed
         migrate: 'drop'
+      }
     },
+    //Another location
     production: {
       user: {
-        data: [
-          {
-            //Some data
-            username: "test",
-            name: "Test",
-            last: "Test",
-            password: "iamademo"
+        faker: {
+          format: {
+            username: "internet.userName",
+            name: "name.firstName",
+            last: "name.lastName",
+            password: "internet.password"
           },
-          {
-            //Some data
-          }
-        ],
+          locale: "es",
+          quantity: 10
+        },
         // if you want to try without callback an error
         migrate: 'safe'
+      }
     },
     serverX: {
       //Some data
@@ -137,3 +136,17 @@ module.exports.routes{
 [npm-url]: https://npmjs.org/package/sails-hook-sanseed
 [downloads-image]: https://img.shields.io/npm/dm/sails-hook-sanseed.svg
 [downloads-url]: https://npmjs.org/package/sails-hook-sanseed
+[build-image]: https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg
+[build-url]: https://travis-ci.org/sanjorgek/sails-hook-sanseed
+[code-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/code.svg
+[code-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed
+[dep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/dependencies.svg
+[dep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm
+[devdep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/devDependencies.svg
+[devdep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm
+[score-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/score.svg
+[score-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed
+[issue-image]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/issue_count.svg
+[issue-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
+[climate-image]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg
+[climate-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
