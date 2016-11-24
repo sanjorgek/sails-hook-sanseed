@@ -18,7 +18,7 @@ module.exports = function myHook(sails) {
         function mapCreate (modelSeed, name, done) {
           async.mapLimit(modelSeed.data, 1, function(item, cb) {
             var cb2 = cb;
-            if(modelSeed.migrate=='safe') cb2 = function(err) {cb()};
+            if(modelSeed.migrate=='safe') cb2 = function(err) {cb();};
             if(sails.models[name]) sails.models[name].create(item, cb2);
             else cb(new Error('Model '+name+" undefined"));
           }, done);
