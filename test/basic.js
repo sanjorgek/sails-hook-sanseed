@@ -30,14 +30,7 @@ describe('Basic tests 1 ::', function() {
 		});
 	});
 	// After tests are complete, lower Sails
-	after(function (done) {
-		// Lower Sails (if it successfully lifted)
-		if (sails) {
-			return sails.lower(done);
-		}
-		// Otherwise just return
-		return done();
-	});
+	after(lowerSails(sails));
 	// Test that Sails can lift with the hook in place
 	it ('sails does not crash', function() {
 		return true;
@@ -83,7 +76,8 @@ describe('Basic tests 2 ::', function() {
           test: {}
         },
         routes: false
-      }
+      },
+      port: 1338
 		},function (err, _sails) {
 			if (err) return done(err);
 			sails = _sails;
@@ -91,14 +85,7 @@ describe('Basic tests 2 ::', function() {
 		});
 	});
 	// After tests are complete, lower Sails
-	after(function (done) {
-		// Lower Sails (if it successfully lifted)
-		if (sails) {
-			return sails.lower(done);
-		}
-		// Otherwise just return
-		return done();
-	});
+	after(lowerSails(sails));
 	// Test that Sails can lift with the hook in place
 	it ('sails does not crash', function() {
 		return true;
@@ -116,4 +103,13 @@ function normalSucces(done){
     if(err) done(err);
     else done();
   };
+}
+
+function lowerSails (sails) {
+  return function (done) {
+		if (sails) {
+			return sails.lower(done);
+		}
+		return done();
+	};
 }
