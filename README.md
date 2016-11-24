@@ -3,17 +3,15 @@
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
   [![Build Status](https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg)](https://travis-ci.org/sanjorgek/sails-hook-sanseed)
-
   [![Code Climate](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
   [![Issue Count](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/issue_count.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
-
   [![bitHound Overall Score](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/score.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed)
   [![bitHound Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/dependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
   [![bitHound Dev Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/devDependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
   [![bitHound Code](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/code.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed)
 
 ## About
-Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations
+Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
 
   [![NPM](https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1)](https://nodei.co/npm/sails-hook-sanseed/)
 
@@ -42,23 +40,24 @@ module.exports.seed = {
         ],
         //If you want to drop before seed
         migrate: 'drop'
+      }
     },
+    //Another location
     production: {
       user: {
-        data: [
-          {
-            //Some data
-            username: "test",
-            name: "Test",
-            last: "Test",
-            password: "iamademo"
+        faker: {
+          format: {
+            username: "internet.userName",
+            name: "name.firstName",
+            last: "name.lastName",
+            password: "internet.password"
           },
-          {
-            //Some data
-          }
-        ],
+          locale: "es",
+          quantity: 10
+        },
         // if you want to try without callback an error
         migrate: 'safe'
+      }
     },
     serverX: {
       //Some data
