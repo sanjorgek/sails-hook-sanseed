@@ -19,12 +19,12 @@ module.exports = function myHook(sails) {
         function mapCreate (modelSeed, name, done) {
           async.mapLimit(modelSeed.data, 1, function(item, cb) {
             var cb2 = cb;
-            if(modelSeed.migrate=='safe') cb2 = function(err) {
+            if(modelSeed.migrate==='safe') cb2 = function(err) {
               debug(err);
               cb();
             };
             if(sails.models[name]) sails.models[name].create(item, cb2);
-            else cb(new Error('Model '+name+" undefined"));
+            else return cb(new Error('Model '+name+" undefined"));
           }, done);
         }
         function seedModel(seed, name, done) {
@@ -35,7 +35,7 @@ module.exports = function myHook(sails) {
           if(modelSeed===null || modelSeed===undefined){
             return done(new Error('missing model'));
           }else{
-            if(modelSeed.migrate=="drop") dropModel(name, function(err) {
+            if(modelSeed.migrate==="drop") dropModel(name, function(err) {
               if(err) return done(err);
               else return mapCreate(modelSeed, name, done);
             });

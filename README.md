@@ -4,6 +4,9 @@
   [![NPM Downloads][downloads-image]][downloads-url]
   [![Build Status](https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg)](https://travis-ci.org/sanjorgek/sails-hook-sanseed)
 
+  [![Code Climate](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
+  [![Issue Count](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/issue_count.svg)](https://codeclimate.com/github/sanjorgek/sails-hook-sanseed)
+
   [![bitHound Overall Score](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/score.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed)
   [![bitHound Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/dependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
   [![bitHound Dev Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/devDependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm)
