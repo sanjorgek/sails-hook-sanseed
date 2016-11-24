@@ -2,6 +2,7 @@
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
+  [![Build Status](https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg?branch=master)](https://travis-ci.org/sanjorgek/sails-hook-sanseed)
 
 ## About
 Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations
