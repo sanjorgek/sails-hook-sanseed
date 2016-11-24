@@ -35,7 +35,7 @@ module.exports = function myHook(sails) {
           if(modelSeed===null || modelSeed===undefined){
             return done(new Error('missing model'));
           }else{
-            if(modelSeed.migrate=="drop") dropModel(name, function(err) {
+            if(modelSeed.migrate==="drop") dropModel(name, function(err) {
               if(err) return done(err);
               else return mapCreate(modelSeed, name, done);
             });
