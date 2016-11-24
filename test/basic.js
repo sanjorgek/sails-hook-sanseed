@@ -46,28 +46,19 @@ describe('Basic tests 1 ::', function() {
 	it("dont die", function (done) {
 		request(sails.hooks.http.app).get('/seed/test')
 		.expect(200)
-		.end(function (err, res) {
-			if(err) done(err);
-			else done();
-		});
+		.end(normalSucces(done));
 	});
 
   it("location not found", function (done) {
 		request(sails.hooks.http.app).get('/seed/other')
 		.expect(400)
-		.end(function (err, res) {
-			if(err) done(err);
-			else done();
-		});
+		.end(normalSucces(done));
 	});
 
   it("model missing", function (done) {
 		request(sails.hooks.http.app).get('/seed/test/lol')
 		.expect(400)
-		.end(function (err, res) {
-			if(err) done(err);
-			else done();
-		});
+		.end(normalSucces(done));
 	});
 });
 
@@ -116,9 +107,13 @@ describe('Basic tests 2 ::', function() {
 	it("dont die", function (done) {
 		request(sails.hooks.http.app).get('/seed/test')
 		.expect(404)
-		.end(function (err, res) {
-			if(err) done(err);
-			else done();
-		});
+		.end(normalSucces(done));
 	});
 });
+
+function normalSucces(done){
+  return function(err, res) {
+    if(err) done(err);
+    else done();
+  }
+}

@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "mocha": "^3.0.2",
-    "sails": "^0.12.4",
+    "sails": "0.12.11",
     "supertest": "^2.0.0"
   }
 }
