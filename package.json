@@ -22,8 +22,13 @@
     "location",
     "faker",
     "data generator",
+    "data",
+    "generator",
     "associations",
-    "association"
+    "association",
+    "many to many",
+    "one to many",
+    "one to one"
   ],
   "author": "sanjorgek",
   "license": "GPL-3.0",

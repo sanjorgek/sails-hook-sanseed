@@ -25,34 +25,71 @@ Define at `config/seed.js`
 module.exports.seed = {
   locations : {
     test: {
-      user: {
-        data: [
+      gun: {
+        scheme: [
           {
-            //Some data
-            username: "juan",
-            name: "Paco",
-            last: "Pedro",
-            password: "de la mar"
+            data: {
+              name: "revolver",
+              ammo: 6
+            }
           },
           {
-            //Some data
+            data: {
+              name: "ak-47",
+              ammo: 30
+            }
           }
         ],
         //If you want to drop before seed
+        migrate: "drop" //use safe to ignore DBErrors
+      },
+      user: {
+        scheme: [
+          {
+            data: {
+              //Some data
+              username: "juan",
+              name: "Paco",
+              last: "Pedro",
+              password: "de la mar"
+            },
+            relations: {
+              //
+              guns: [
+                {
+                  //Waterline query
+                  name: "revolver"
+                }
+              ],
+              favGun: {
+                //Waterline query
+                name: "ak-47"
+              }
+            }
+          },
+          {
+            //More data
+          }
+        ],
         migrate: 'drop'
       }
     },
     //Another location
     production: {
       user: {
-        faker: {
-          format: {
-            username: "{{internet.userName}}",
-            names: "{{name.firstName}} {{name.lastName}}",
-            password: "{{internet.password}}"
+        scheme: {
+          faker: {
+            format: {
+              username: "{{internet.userName}}",
+              names: "{{name.firstName}} {{name.lastName}}",
+              password: "{{internet.password}}"
+            },
+            locale: "es",
+            quantity: 10
           },
-          locale: "es",
-          quantity: 10
+          relations: {
+            //Some relations
+          }
         },
         // if you want to try without callback an error
         migrate: 'safe'
