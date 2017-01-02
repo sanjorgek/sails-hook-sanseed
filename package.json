@@ -8,7 +8,7 @@
     "hookName": "seed"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/basic.js"
   },
   "repository": {
     "type": "git",

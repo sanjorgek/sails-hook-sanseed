@@ -11,9 +11,9 @@
   [![bitHound Code][code-image]][code-url]
 
 ## About
-Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
+Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
 
-  [![NPM](https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1)](https://nodei.co/npm/sails-hook-sanseed/)
+  [![NPM][graph-image]][graph-url]
 
 ## Settings
 Install
@@ -54,13 +54,14 @@ module.exports.seed = {
               password: "de la mar"
             },
             relations: {
-              //
+              //Use this to set Many-to-Many
               guns: [
                 {
                   //Waterline query
                   name: "revolver"
                 }
               ],
+              // Use this to set One-to-Many and One-to-One
               favGun: {
                 //Waterline query
                 name: "ak-47"
@@ -168,6 +169,10 @@ module.exports.routes{
 }
 ~~~
 
+## More
+
+See [sails-sanseed-example](https://github.com/sanjorgek/sails-sanseed-example) for more details
+
 [npm-image]: https://img.shields.io/npm/v/sails-hook-sanseed.svg
 [npm-url]: https://npmjs.org/package/sails-hook-sanseed
 [downloads-image]: https://img.shields.io/npm/dm/sails-hook-sanseed.svg
@@ -186,3 +191,5 @@ module.exports.routes{
 [issue-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
 [climate-image]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg
 [climate-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
+[graph-image]: https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1
+[graph-url]: https://nodei.co/npm/sails-hook-sanseed/
