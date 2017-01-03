@@ -53,19 +53,23 @@ module.exports.seed = {
               last: "Pedro",
               password: "de la mar"
             },
-            relations: {
-              //Use this to set Many-to-Many
+            // Use this to set One-to-Many and One-to-One
+            oneTo: {
+              // Use a JSON
+              favGun: {
+                //Waterline query
+                name: "ak-47"
+              }
+            },
+            //Use this to set Many-to-Many
+            manyTo: {
+              // Use an Array
               guns: [
                 {
                   //Waterline query
                   name: "revolver"
                 }
               ],
-              // Use this to set One-to-Many and One-to-One
-              favGun: {
-                //Waterline query
-                name: "ak-47"
-              }
             }
           },
           {
@@ -88,9 +92,8 @@ module.exports.seed = {
             locale: "es",
             quantity: 10
           },
-          relations: {
-            //Some relations
-          }
+          oneTo: {/** */},
+          manyTo: {/** */}
         },
         // if you want to try without callback an error
         migrate: 'safe'
