@@ -11,7 +11,7 @@
   [![bitHound Code][code-image]][code-url]
 
 ## About
-Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
+Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different database locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
 
   [![NPM][graph-image]][graph-url]
 
@@ -23,8 +23,9 @@ npm install sails-hook-sanseed
 Define at `config/seed.js`
 ~~~js
 module.exports.seed = {
-  locations : {
+  databases : {
     test: {
+      // A simple model creation
       gun: {
         scheme: [
           {
@@ -43,11 +44,11 @@ module.exports.seed = {
         //If you want to drop before seed
         migrate: "drop" //use safe to ignore DBErrors
       },
+      // A model with associations
       user: {
         scheme: [
           {
             data: {
-              //Some data
               username: "juan",
               name: "Paco",
               last: "Pedro",
@@ -68,7 +69,8 @@ module.exports.seed = {
                 {
                   //Waterline query
                   name: "revolver"
-                }
+                },
+                {/** */}
               ],
             }
           },
@@ -81,6 +83,7 @@ module.exports.seed = {
     },
     //Another location
     production: {
+      // Use Faker.js to fill atributes
       user: {
         scheme: {
           faker: {

@@ -18,7 +18,7 @@ describe('Basic tests 1 ::', function() {
 			},
 			log: {level: "error"},
       seed: {
-        locations: {
+        databases: {
           test: {}
         },
         routes: true
@@ -72,7 +72,7 @@ describe('Basic tests 2 ::', function() {
 			},
 			log: {level: "error"},
       seed: {
-        locations: {
+        databases: {
           test: {}
         },
         routes: false
