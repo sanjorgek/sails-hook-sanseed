@@ -42,7 +42,7 @@ describe('Basic tests 1 ::', function() {
 		.end(normalSucces(done));
 	});
 
-  it("location not found", function (done) {
+  it("database not found", function (done) {
 		request(sails.hooks.http.app).get('/seed/other')
 		.expect(400)
 		.end(normalSucces(done));

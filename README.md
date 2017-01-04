@@ -84,7 +84,7 @@ module.exports.seed = {
         migrate: 'drop'
       }
     },
-    //Another location
+    //Another database
     production: {
       // Use Faker.js to fill atributes
       user: {
@@ -115,24 +115,24 @@ module.exports.seed = {
 ```
 
 ## Use
-If `sails.seed.routes` is true seed your models with `/seed/:location` or `/seed/:location/:model` routes, and `/drop/:model` or `/drop` routes to drop models.
+If `sails.seed.routes` is true seed your models with `/seed/:database` or `/seed/:database/:model` routes, and `/drop/:model` or `/drop` routes to drop models.
 
 ### Aviable Functions
 Also you have `sails.seed` with
 
-#### seedModel(location, modelName, callback)
+#### seedModel(database, modelName, callback)
 
 __Arguments__
 
-* `location` - A string with location name.
+* `database` - A string with database name.
 * `modelName` - A string with model name.
 * `callback(err)` - A callback which is called when all task have finished, or an error occurs.
 
-#### seedAll(location, callback)
+#### seedAll(database, callback)
 
 __Arguments__
 
-* `location` - A string with location name.
+* `database` - A string with database name.
 * `callback(err)` - A callback which is called when all task have finished, or an error occurs.
 
 #### dropModel(modelName, callback)
@@ -152,8 +152,8 @@ Define at `/config/routes.js`:
 
 ```js
 module.exports.routes{
-  'get /sanseed/:location': function  (req, res, next) {
-    sails.seed.seedAll(req.params.location, function(err){
+  'get /sanseed/:database': function  (req, res, next) {
+    sails.seed.seedAll(req.params.database, function(err){
       if(err){
         //do something
       }else{
