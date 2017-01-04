@@ -11,17 +11,20 @@
   [![bitHound Code][code-image]][code-url]
 
 ## About
-Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different database locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
+Hook for [sails](http://sailsjs.org/) to add items ('seed') to the database depending on different locations. See [faker.js](http://marak.github.io/faker.js/) for more details.
 
   [![NPM][graph-image]][graph-url]
 
 ## Settings
 Install
-~~~
+
+```
 npm install sails-hook-sanseed
-~~~
+```
+
 Define at `config/seed.js`
-~~~js
+
+```js
 module.exports.seed = {
   databases : {
     test: {
@@ -92,8 +95,8 @@ module.exports.seed = {
               names: "{{name.firstName}} {{name.lastName}}",
               password: "{{internet.password}}"
             },
-            locale: "es",
-            quantity: 10
+            locale: "es", // set lang
+            quantity: 10 // set many elements as you wish
           },
           oneTo: {/** */},
           manyTo: {/** */}
@@ -109,7 +112,7 @@ module.exports.seed = {
   //optional
   routes: true //Defult routes
 }
-~~~
+```
 
 ## Use
 If `sails.seed.routes` is true seed your models with `/seed/:location` or `/seed/:location/:model` routes, and `/drop/:model` or `/drop` routes to drop models.
@@ -146,7 +149,8 @@ __Arguments__
 * `callback(err)` - A callback which is called when all task have finished, or an error occurs.
 
 Define at `/config/routes.js`:
-~~~js
+
+```js
 module.exports.routes{
   'get /sanseed/:location': function  (req, res, next) {
     sails.seed.seedAll(req.params.location, function(err){
@@ -158,22 +162,23 @@ module.exports.routes{
     });
   }
 }
-~~~
+```
 
 ### Policies
 You have:
+
 * `seedModel`
 * `seedAll`
 * `dropModel`
 * `dropAll`
 
-
 Define at `/config/routes.js`:
-~~~js
+
+```js
 module.exports.routes{
   'get /sandrop' : [{policy: 'dropAll'}]
 }
-~~~
+```
 
 ## More
 
