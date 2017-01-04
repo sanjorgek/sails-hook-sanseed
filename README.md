@@ -39,9 +39,12 @@ module.exports.seed = {
           },
           {
             data: {
-              name: "ak-47",
-              ammo: 30
-            }
+              name: "ak-47"
+            },
+            faker: {
+              ammo: "{{random.number}}" // use faker to fill an attribute
+            },
+            locale: "es", // set lang, default en
           }
         ],
         //If you want to drop before seed
