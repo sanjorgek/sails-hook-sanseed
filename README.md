@@ -39,9 +39,12 @@ module.exports.seed = {
           },
           {
             data: {
-              name: "ak-47",
-              ammo: 30
-            }
+              name: "ak-47"
+            },
+            faker: {
+              ammo: "{{random.number}}" // use faker to fill an attribute
+            },
+            locale: "es", // set lang, default en
           }
         ],
         //If you want to drop before seed
@@ -86,18 +89,16 @@ module.exports.seed = {
     },
     //Another database
     production: {
-      // Use Faker.js to fill atributes
+      // Use Faker.js to fill schemas
       user: {
-        scheme: {
-          faker: {
-            format: {
-              username: "{{internet.userName}}",
-              names: "{{name.firstName}} {{name.lastName}}",
-              password: "{{internet.password}}"
-            },
-            locale: "es", // set lang
-            quantity: 10 // set many elements as you wish
+        faker: {
+          format: {
+            username: "{{internet.userName}}",
+            names: "{{name.firstName}} {{name.lastName}}",
+            password: "{{internet.password}}"
           },
+          locale: "es", // set lang, default en
+          quantity: 10, // set many elements as you wish, default 1
           oneTo: {/** */},
           manyTo: {/** */}
         },
