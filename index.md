@@ -1,7 +1,19 @@
 # sails-hook-sanseed
 
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  [![Build Status][build-image]][build-url]
+  [![Code Climate][climate-image]][climate-url]
+  [![Issue Count][issue-image]][issue-url]
+  [![bitHound Overall Score][score-image]][score-url]
+  [![bitHound Dependencies][dep-image]][dep-url]
+  [![bitHound Dev Dependencies][devdep-image]][devdep-url]
+  [![bitHound Code][code-image]][code-url]
+
 ## About
-Hook Hook for [sails](http://sailsjs.org/) to add items ('seed') to the base depending on different locations. See [faker.js](https://www.npmjs.com/package/faker#api-methods) for more details
+Hook for [sails](http://sailsjs.org/) to add items ('seed') to the database depending on different locations. See [faker.js](http://marak.github.io/faker.js/) for more details.
+
+  [![NPM][graph-image]][graph-url]
 
 ## Settings
 Install
@@ -11,36 +23,80 @@ npm install sails-hook-sanseed
 Define at `config/seed.js`
 ~~~js
 module.exports.seed = {
-  locations : {
+  databases : {
     test: {
-      user: {
-        data: [
+      // A simple model creation
+      gun: {
+        scheme: [
           {
-            //Some data
-            username: "juan",
-            name: "Paco",
-            last: "Pedro",
-            password: "de la mar"
+            data: {
+              name: "revolver",
+              ammo: 6
+            }
           },
           {
-            //Some data
+            data: {
+              name: "ak-47",
+              ammo: 30
+            }
           }
         ],
         //If you want to drop before seed
+        migrate: "drop" //use safe to ignore DBErrors
+      },
+      // A model with associations
+      user: {
+        scheme: [
+          {
+            data: {
+              username: "juan",
+              name: "Paco",
+              last: "Pedro",
+              password: "de la mar"
+            },
+            // Use this to set One-to-Many and One-to-One
+            oneTo: {
+              // Use a JSON
+              favGun: {
+                //Waterline query
+                name: "ak-47"
+              }
+            },
+            //Use this to set Many-to-Many
+            manyTo: {
+              // Use an Array
+              guns: [
+                {
+                  //Waterline query
+                  name: "revolver"
+                },
+                {/** */}
+              ],
+            }
+          },
+          {
+            //More data
+          }
+        ],
         migrate: 'drop'
       }
     },
     //Another location
     production: {
+      // Use Faker.js to fill atributes
       user: {
-        faker: {
-          format: {
-            username: "{{internet.userName}}",
-            names: "{{name.firstName}} {{name.lastName}}",
-            password: "{{internet.password}}"
+        scheme: {
+          faker: {
+            format: {
+              username: "{{internet.userName}}",
+              names: "{{name.firstName}} {{name.lastName}}",
+              password: "{{internet.password}}"
+            },
+            locale: "es", // set lang
+            quantity: 10 // set many elements as you wish
           },
-          locale: "es",
-          quantity: 10
+          oneTo: {/** */},
+          manyTo: {/** */}
         },
         // if you want to try without callback an error
         migrate: 'safe'
@@ -119,5 +175,27 @@ module.exports.routes{
 }
 ~~~
 
-## Test
-See [sails-sanseed-example](https://github.com/sanjorgek/sails-sanseed-example) for more details.
+## More
+
+See [sails-sanseed-example](https://github.com/sanjorgek/sails-sanseed-example) for more details
+
+[npm-image]: https://img.shields.io/npm/v/sails-hook-sanseed.svg
+[npm-url]: https://npmjs.org/package/sails-hook-sanseed
+[downloads-image]: https://img.shields.io/npm/dm/sails-hook-sanseed.svg
+[downloads-url]: https://npmjs.org/package/sails-hook-sanseed
+[build-image]: https://travis-ci.org/sanjorgek/sails-hook-sanseed.svg
+[build-url]: https://travis-ci.org/sanjorgek/sails-hook-sanseed
+[code-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/code.svg
+[code-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed
+[dep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/dependencies.svg
+[dep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm
+[devdep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/devDependencies.svg
+[devdep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/bithound/dependencies/npm
+[score-image]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed/badges/score.svg
+[score-url]: https://www.bithound.io/github/sanjorgek/sails-hook-sanseed
+[issue-image]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/issue_count.svg
+[issue-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
+[climate-image]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed/badges/gpa.svg
+[climate-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
+[graph-image]: https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1
+[graph-url]: https://nodei.co/npm/sails-hook-sanseed/
