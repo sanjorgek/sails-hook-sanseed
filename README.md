@@ -88,16 +88,14 @@ module.exports.seed = {
     production: {
       // Use Faker.js to fill atributes
       user: {
-        scheme: {
-          faker: {
-            format: {
-              username: "{{internet.userName}}",
-              names: "{{name.firstName}} {{name.lastName}}",
-              password: "{{internet.password}}"
-            },
-            locale: "es", // set lang
-            quantity: 10 // set many elements as you wish
+        faker: {
+          format: {
+            username: "{{internet.userName}}",
+            names: "{{name.firstName}} {{name.lastName}}",
+            password: "{{internet.password}}"
           },
+          locale: "es", // set lang
+          quantity: 10, // set many elements as you wish
           oneTo: {/** */},
           manyTo: {/** */}
         },
