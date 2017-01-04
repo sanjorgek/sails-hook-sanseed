@@ -86,7 +86,7 @@ module.exports.seed = {
     },
     //Another database
     production: {
-      // Use Faker.js to fill atributes
+      // Use Faker.js to fill schemas
       user: {
         faker: {
           format: {
@@ -94,8 +94,8 @@ module.exports.seed = {
             names: "{{name.firstName}} {{name.lastName}}",
             password: "{{internet.password}}"
           },
-          locale: "es", // set lang
-          quantity: 10, // set many elements as you wish
+          locale: "es", // set lang, default en
+          quantity: 10, // set many elements as you wish, default 1
           oneTo: {/** */},
           manyTo: {/** */}
         },
