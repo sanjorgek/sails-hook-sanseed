@@ -2,7 +2,7 @@ title: Sails-Hook-SanSeed
 description: Hook to add items to the base depending on different localities
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
 
 gems:
   - jekyll-mentions
