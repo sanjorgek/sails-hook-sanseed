@@ -181,9 +181,24 @@ module.exports.routes{
 }
 ```
 
-## More
+## Test & Examples
 
 See [sails-sanseed-example](https://github.com/sanjorgek/sails-sanseed-example) for more details
+
+## Older Versions
+
+Old APIDocs:
+
+* [v2.0.1](v2-0-1.md)
+* [v2](v2.md)
+* [v1.3](v1-3.md)
+* [v1.2](v1-2.md)
+* [v1.1.2](v1-1-2.md)
+* [v1.1.1](v1-1-1.md)
+* [v1.1](v1-1.md)
+* [v1.0.1](v1-0-1.md)
+* [v1](v1.md)
+* [v0.1.1](v0-1-1.md)
 
 [npm-image]: https://img.shields.io/npm/v/sails-hook-sanseed.svg
 [npm-url]: https://npmjs.org/package/sails-hook-sanseed
