@@ -2,7 +2,7 @@ title: sails-hook-sanseed
 description: Hook to add items to the base depending on different databases
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-minimal
+theme: jekyll-theme-merlot
 
 gems:
   - jekyll-mentions
