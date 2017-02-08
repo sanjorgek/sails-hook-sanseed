@@ -44,6 +44,6 @@
   "devDependencies": {
     "mocha": "^3.0.2",
     "sails": "x",
-    "supertest": "^2.0.0"
+    "supertest": "^3.0.0"
   }
 }
