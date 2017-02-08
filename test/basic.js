@@ -1,5 +1,5 @@
-var sailsBuilder = require('sails').Sails;
-var request = require('supertest');
+var sailsBuilder = require("sails").Sails;
+var request = require("supertest");
 
 describe('Basic tests 1 ::', function() {
 	// Var to hold a running sails app instance
