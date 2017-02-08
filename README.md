@@ -9,6 +9,7 @@
   [![bitHound Dependencies][dep-image]][dep-url]
   [![bitHound Dev Dependencies][devdep-image]][devdep-url]
   [![bitHound Code][code-image]][code-url]
+  [![Codacy Badge][codacy-image]][codacy-url]
 
 ## About
 Hook for [sails](http://sailsjs.org/) to add items ('seed') to the database depending on different locations. See [faker.js](http://marak.github.io/faker.js/) for more details.
@@ -205,3 +206,5 @@ See [sails-sanseed-example](https://github.com/sanjorgek/sails-sanseed-example) 
 [climate-url]: https://codeclimate.com/github/sanjorgek/sails-hook-sanseed
 [graph-image]: https://nodei.co/npm-dl/sails-hook-sanseed.png?months=6&height=1
 [graph-url]: https://nodei.co/npm/sails-hook-sanseed/
+[codacy-url]: https://www.codacy.com/app/sanjorgek/sails-hook-sanseed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sanjorgek/sails-hook-sanseed&amp;utm_campaign=Badge_Grade
+[codacy-image]: https://api.codacy.com/project/badge/Grade/d54bd70aa8c449e89e29dfcacc8e9993
