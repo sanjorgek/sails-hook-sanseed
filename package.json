@@ -39,7 +39,8 @@
   "dependencies": {
     "async": "^2.0.1",
     "debug": "^2.3.3",
-    "faker": "^3.1.0"
+    "faker": "^3.1.0",
+    "lazy.js": "^0.5.0"
   },
   "devDependencies": {
     "mocha": "^3.0.2",
