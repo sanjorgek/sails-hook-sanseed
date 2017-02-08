@@ -11,6 +11,6 @@ module.exports = function myHook(sails) {
 
     initialize: initialize(sails),
 
-    routes: routes
+    routes: routes(sails)
   };
 };
