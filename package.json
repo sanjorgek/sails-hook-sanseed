@@ -39,11 +39,13 @@
   "dependencies": {
     "async": "^2.0.1",
     "debug": "^2.3.3",
-    "faker": "^3.1.0"
+    "faker": "^3.1.0",
+    "lazy.js": "^0.5.0",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "mocha": "^3.0.2",
     "sails": "x",
-    "supertest": "^2.0.0"
+    "supertest": "^3.0.0"
   }
 }

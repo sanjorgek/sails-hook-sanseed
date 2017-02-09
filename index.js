@@ -7,10 +7,10 @@ module.exports = function myHook(sails) {
   return {
     defaults: defaults,
 
-    configure: configure,
+    configure: configure(sails),
 
-    initialize: initialize,
+    initialize: initialize(sails),
 
-    routes: routes
+    routes: routes(sails)
   };
 };

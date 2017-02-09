@@ -1,5 +1,5 @@
-var Sails = require('sails').Sails;
-var request = require('supertest');
+var sailsBuilder = require("sails").Sails;
+var request = require("supertest");
 
 describe('Basic tests 1 ::', function() {
 	// Var to hold a running sails app instance
@@ -9,7 +9,7 @@ describe('Basic tests 1 ::', function() {
 		// Hook will timeout in 10 seconds
 		this.timeout(11000);
 		// Attempt to lift sails
-		Sails().lift({
+		sailsBuilder().lift({
 			hooks: {
 				// Load the hook
         seed: require('../'),
@@ -63,7 +63,7 @@ describe('Basic tests 2 ::', function() {
 		// Hook will timeout in 10 seconds
 		this.timeout(11000);
 		// Attempt to lift sails
-		Sails().lift({
+		sailsBuilder().lift({
 			hooks: {
 				// Load the hook
         seed: require('../'),
