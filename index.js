@@ -7,7 +7,7 @@ module.exports = function myHook(sails) {
   return {
     defaults: defaults,
 
-    configure: configure,
+    configure: configure(sails),
 
     initialize: initialize(sails),
 
