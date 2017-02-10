@@ -1,13 +1,13 @@
-var defaults = require('./lib/defaults'),
-  configure = require('./lib/configure'),
-  initialize =require('./lib/initialize'),
-  routes = require('./lib/routes');
+var defaults = require("./lib/defaults"),
+  configure = require("./lib/configure"),
+  initialize =require("./lib/initialize"),
+  routes = require("./lib/routes");
 
 module.exports = function myHook(sails) {
   return {
-    defaults: defaults,
+    defaults,
 
-    configure: configure,
+    configure: configure(sails),
 
     initialize: initialize(sails),
 
