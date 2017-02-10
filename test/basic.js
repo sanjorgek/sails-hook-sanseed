@@ -1,6 +1,23 @@
 var sailsBuilder = require("sails").Sails;
 var request = require("supertest");
 
+
+function normalSucces(done){
+  return function(err, res) {
+    if(err) done(err);
+    else done();
+  };
+}
+
+function lowerSails (sails) {
+  return function (done) {
+		if (sails) {
+			return sails.lower(done);
+		}
+		return done();
+	};
+}
+
 describe('Basic tests 1 ::', function() {
 	// Var to hold a running sails app instance
 	var sails;
@@ -97,19 +114,3 @@ describe('Basic tests 2 ::', function() {
 		.end(normalSucces(done));
 	});
 });
-
-function normalSucces(done){
-  return function(err, res) {
-    if(err) done(err);
-    else done();
-  };
-}
-
-function lowerSails (sails) {
-  return function (done) {
-		if (sails) {
-			return sails.lower(done);
-		}
-		return done();
-	};
-}
