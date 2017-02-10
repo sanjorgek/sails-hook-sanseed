@@ -5,7 +5,7 @@ var defaults = require("./lib/defaults"),
 
 module.exports = function myHook(sails) {
   return {
-    defaults: defaults,
+    defaults,
 
     configure: configure(sails),
 
