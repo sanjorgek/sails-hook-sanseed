@@ -3,18 +3,18 @@ var request = require("supertest");
 
 
 function normalSucces(done){
-  return function(err, res) {
-    if(err) done(err);
-    else done();
+  return function(err) {
+    return err ?
+			done(err):
+			done();
   };
 }
 
 function lowerSails (sails) {
   return function (done) {
-		if (sails) {
-			return sails.lower(done);
-		}
-		return done();
+		return sails ?
+			sails.lower(done):
+			done();
 	};
 }
 
