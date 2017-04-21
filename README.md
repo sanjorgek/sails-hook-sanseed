@@ -116,6 +116,36 @@ module.exports.seed = {
 }
 ```
 
+## Notes with Faker:
+If you need to use your own generators instead of a Faker one, you can do it like this:
+
+```js
+// Define your own generator somewhere. It has to be available in the seeds.js file.
+function myCustomGenerator(param1, param2, param3) {
+  return 'something'
+};
+
+// In a faker section of the seeds:
+user: {
+  faker: {
+    format: {
+      username: "{{internet.userName}}",
+      names: "{{name.firstName}} {{name.lastName}}",
+      password: "{{internet.password}}"
+      myProperty: () => myCustomGenerator( val1, val2, va3);
+    },
+    locale: "es", // set lang, default en
+    quantity: 10, // set many elements as you wish, default 1
+    oneTo: {/** */},
+    manyTo: {/** */}
+  },
+  // if you want to try without callback an error
+  migrate: 'safe'
+}
+
+```
+You can use this to generate objects or arrays fields with custom content.
+
 ## Use
 If `sails.seed.routes` is true seed your models with `/seed/:database` or `/seed/:database/:model` routes, and `/drop/:model` or `/drop` routes to drop models.
 
