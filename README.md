@@ -131,8 +131,8 @@ user: {
     format: {
       username: "{{internet.userName}}",
       names: "{{name.firstName}} {{name.lastName}}",
-      password: "{{internet.password}}"
-      myProperty: () => myCustomGenerator( val1, val2, va3);
+      password: "{{internet.password}}",
+      myProperty: () => myCustomGenerator( val1, val2, va3 );
     },
     locale: "es", // set lang, default en
     quantity: 10, // set many elements as you wish, default 1
